@@ -86,11 +86,8 @@ Polymer({
   },
   fetch:function(){
     const inp = this.$.input.value;
-    if(inp !== this.username){
-      this.set("error","");
-      this.set("github",{});
-      this.set("username",inp);
-    }
+    this.set("error","");
+    this.set("username",inp);
   },
   _showSpinner(n,m){
     return !(n || m);
