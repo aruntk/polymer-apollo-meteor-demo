@@ -1,0 +1,99 @@
+<dom-module id="apollo-test">
+  <template>
+    <style>
+.avatar{
+  height:100px;
+}
+[hidden]{
+  display:none;
+}
+.apollo{
+  width:400px;
+}
+.contents{
+  word-break: break-word;
+}
+    </style>
+    <div class="apollo">
+      <div class="layout horizontal">
+        <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="fetch"></iron-a11y-keys>
+        <paper-input class="flex" id="input" label="Github Username" value="[[username]]"></paper-input>
+        <paper-button on-tap="fetch">Fetch</paper-button>
+      </div>
+      <div class="vertical layout center">
+        <paper-spinner active="{{loading}}">
+        </paper-spinner>
+        <div class="vertical layout center center-justified contents" hidden="{{error}}">
+          <img src="{{github.avatar_url}}" hidden="{{!github.avatar_url}}" class="avatar"/>
+          <div hidden="{{!github.name}}">Name: [[github.name]]</div>
+          <div hidden="{{!github.html_url}}">Profile : 
+            <a href="[[github.html_url]]">[[github.html_url]]</a>
+          </div>
+          <div hidden="{{!github.public_repos}}">Repos : [[github.public_repos]]</div>
+        </div>
+        <div class="vertical layout center" hidden="{{!error}}">
+          {{error}}
+        </div>
+      </div>
+    </div>
+  </template>
+</dom-module>
+<script>
+import gql from 'graphql-tag';
+Polymer({
+  is:"apollo-test",
+  behaviors:[PolymerApolloBehavior],
+  properties:{
+    github:{
+      type:Object,
+      value:{}
+    },
+    username:{
+      type:String,
+      value:"aruntk",
+    },
+    loading:Boolean,
+    error:String,
+    target: {
+      type: Object,
+      value: function() {
+        return this.$.input;
+      }
+    },
+  },
+
+  apollo: {
+    // Query with parameters
+    github: {
+      query: gql`query github($username: String!) {
+        github(username: $username){
+          avatar_url,
+          html_url,
+          name,
+          public_repos
+        }
+      }`,
+      variables: {
+        username: 'username'
+      },
+      error(error){
+        this.set("github",{});
+        this.set("error",error.message);
+      },
+      loadingKey:"loading"
+        // Additional options here
+    },
+  },
+  fetch:function(){
+    const inp = this.$.input.value;
+    if(inp !== this.username){
+      this.set("error","");
+      this.set("github",{});
+      this.set("username",inp);
+    }
+  },
+  _showSpinner(n,m){
+    return !(n || m);
+  }
+});
+</script>

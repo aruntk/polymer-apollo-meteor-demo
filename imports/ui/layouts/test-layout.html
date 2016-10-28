@@ -1,0 +1,42 @@
+<link rel="import" href="../components/apollo-test.html">
+<dom-module id="test-layout">
+  <style>
+.main{
+  @apply(--layout-horizontal);
+  @apply(--layout-center-center);
+}
+  </style>
+  <template>
+
+    <!--================== <Router> ================-->
+
+    <app-location route="{{route}}"></app-location>
+
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}"></app-route>
+
+    <!--================= </Router> ================-->
+
+    <paper-header-panel class="fit layout">
+      <paper-toolbar>
+
+        <div class="flex"><h1>Polymer-Apollo
+            <template is="dom-if" if="[[notCordova]]">
+              + Meteor
+            </template>
+          </h1></div>
+
+          <div class="">
+            {{appState}}
+          </div>
+      </paper-toolbar>
+      <iron-pages class="flex main" id="mainView" selected="{{routeData.page}}" attr-for-selected="name">
+        <paper-card heading="Meteor Polymer Apollo Github API" id="region1" name="home">
+          <div class="card-content">
+            <apollo-test></apollo-test>
+          </div>
+        </paper-card>
+              </iron-pages>
+
+    </paper-header-panel>
+  </template>
+</dom-module>
