@@ -19,7 +19,7 @@ graphiql link - [http://localhost:3000/graphiql](http://localhost:3000/graphiql?
 
 #### Setting Up Apollo Graphql Server
 
-https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/server/apollo.js
+[/server/apollo.js](https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/server/apollo.js)
 
 ```js
 // /server/apollo.js
@@ -42,7 +42,7 @@ createApolloServer({
 
 #### Schema
 
-https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/api/schema.js
+[/imports/api/schema.js](https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/api/schema.js)
 
 ```js
 /imports/api/schema.js
@@ -67,7 +67,7 @@ schema {
 
 #### Resolver
 
-https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/api/resolvers.js
+[/imports/api/resolvers.js](https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/api/resolvers.js)
 
 ```
 ///imports/api/resolvers.js
@@ -99,7 +99,7 @@ export const resolvers = {
 
 #### Creating PolymerApolloBehavior
 
-https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/startup/client/apollo.js
+[/imports/startup/client/apollo.js](https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/startup/client/apollo.js)
 
 ```js
 
@@ -116,7 +116,7 @@ window.PolymerApolloBehavior = new PolymerApollo({apolloClient});
 
 #### Creating a Polymer element
 
-https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/ui/components/apollo-test.html
+[/imports/ui/components/apollo-test.html](https://github.com/aruntk/polymer-apollo-meteor-demo/blob/master/imports/ui/components/apollo-test.html)
 
 ```html
 
