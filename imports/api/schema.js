@@ -1,4 +1,4 @@
-export const typeDefs = [`
+const typeDefs = [`
 type github {
   login: String
   id: String
@@ -39,3 +39,4 @@ schema {
 }
 `];
 
+export default typeDefs;

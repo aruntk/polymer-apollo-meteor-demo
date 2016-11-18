@@ -1,2 +1,2 @@
-import "./apollo.js";
+import './apollo.js';
 import '../../ui';
