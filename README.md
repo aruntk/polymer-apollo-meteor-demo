@@ -9,7 +9,7 @@ Github User API Meteor Graphql App Using [polymer-apollo](https://github.com/aru
 ```sh
 git clone git@github.com:aruntk/polymer-apollo-meteor-demo.git your-app-folder
 ```
-(change remote url)[https://help.github.com/articles/changing-a-remote-s-url/].
+[change remote url](https://help.github.com/articles/changing-a-remote-s-url/).
 
 
 #### Build
