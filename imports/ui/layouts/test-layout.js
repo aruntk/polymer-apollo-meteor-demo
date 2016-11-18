@@ -1,39 +1,38 @@
 import './test-layout.html';
 
 Polymer({
-  is:"test-layout",
-  behaviors:[mwcMixin],
-  properties:{
-    route:Object,
-    routeData:{
+  is: 'test-layout',
+  behaviors: [mwcMixin],
+  properties: {
+    route: Object,
+    routeData: {
       type: Object,
-      value: function() {
+      value() {
         return {
-          page: ''
+          page: 'home',
         };
-      }
+      },
     },
-    appState:{
-      type:String
+    appState: {
+      type: String,
     },
-    notCordova:Boolean
-
+    notCordova: Boolean,
   },
-  trackers:["changeStatus(routeData.page)"],
-  changeStatus:function(page){
-    this.set("appState",`Status : ${Meteor.status().status}`);
-    if(!Meteor.isCordova){
+  trackers: ['changeStatus(routeData.page)'],
+  changeStatus(page) {
+    if (!page) {
+      return this.set('routeData.page', 'home');
+    }
+    if (!Meteor.isCordova) {
       this.notCordova = true;
     }
+    return this.set('appState', `Status: ${Meteor.status().status}, Page: ${page}`);
   },
 
-  second:function(){
-    this.set("routeData.page", "second"); 
+  second() {
+    this.set('routeData.page', 'second');
   },
-  home:function(){
-
-    this.set("routeData.page", ""); 
-  }
+  home() {
+    this.set('routeData.page', '');
+  },
 });
-
-
