@@ -3,6 +3,8 @@
     <style>
 .avatar{
   height:100px;
+  width: 100px;
+  border-radius: 50%;
 }
 [hidden]{
   display:none;
@@ -25,11 +27,23 @@
         </paper-spinner>
         <div class="vertical layout center center-justified contents" hidden="{{error}}">
           <img src="{{github.avatar_url}}" hidden="{{!github.avatar_url}}" class="avatar"/>
-          <div hidden="{{!github.name}}">Name: [[github.name]]</div>
-          <div hidden="{{!github.html_url}}">Profile : 
-            <a href="[[github.html_url]]">[[github.html_url]]</a>
-          </div>
-          <div hidden="{{!github.public_repos}}">Repos : [[github.public_repos]]</div>
+
+          <!-- a wrapper for the paper items -->
+         <paper-listbox selected="0">
+         <!-- a selection of zero.. the first item is selected -->
+
+            <!-- first item is for the name -->
+            <paper-item hidden="{{!github.name}}">Name: [[github.name]]</paper-item>
+
+            <!-- second one is for the url of the profile -->
+            <paper-item hidden="{{!github.html_url}}">Profile:
+             <a style="text-decoration: none" href="[[github.html_url]]">  [[github.html_url]]</a>
+            </paper-item>
+
+            <!-- the number of public repos -->
+            <paper-item hidden="{{!github.public_repos}}">Repos: 
+            [[github.public_repos]] </paper-item>
+         </paper-listbox>
         </div>
         <div class="vertical layout center" hidden="{{!error}}">
           {{error}}
