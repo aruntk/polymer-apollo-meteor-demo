@@ -87,16 +87,25 @@ Polymer({
           public_repos
         }
       }`,
-      variables: {
-        username: 'username'
-      },
-      error(error){
+      options: 'getOptions(username)',
+
+      error: function(error){
         this.set("github",{});
         this.set("error",error.message);
       },
-      loadingKey:"loading"
+      success: function(result) {
+        console.log(result);
+      },
+      loadingKey: "loading",
         // Additional options here
     },
+  },
+  getOptions: function(u) {
+    return {
+      variables: {
+        username: u,
+      },
+    };
   },
   fetch:function(){
     const inp = this.$.input.value;

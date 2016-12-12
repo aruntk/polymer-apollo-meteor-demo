@@ -16,6 +16,6 @@
     "graphql-tag": "^0.1.15",
     "graphql-tools": "^0.8.0",
     "meteor-node-stubs": "~0.2.0",
-    "polymer-apollo": "^1.0.7"
+    "polymer-apollo": "^1.1.2"
   }
 }
