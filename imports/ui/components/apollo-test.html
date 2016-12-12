@@ -54,6 +54,11 @@
 </dom-module>
 <script>
 import gql from 'graphql-tag';
+const fragment = gql`fragment CommonOptions on Github {
+          avatar_url,
+          html_url,
+          name,
+}`;
 Polymer({
   is:"apollo-test",
   behaviors:[PolymerApolloBehavior],
@@ -80,13 +85,14 @@ Polymer({
     // Query with parameters
     github: {
       query: gql`query github($username: String!) {
-        github(username: $username){
-          avatar_url,
-          html_url,
-          name,
-          public_repos
-        }
-      }`,
+        github: github(username: $username){
+          ...CommonOptions
+        },
+        arun: github(username: "aruntk"){
+          ...CommonOptions
+        },
+      },
+      ${fragment}`,
       options: 'getOptions(username)',
 
       error: function(error){
@@ -97,7 +103,7 @@ Polymer({
         console.log(result);
       },
       loadingKey: "loading",
-        // Additional options here
+      // Additional options here
     },
   },
   getOptions: function(u) {

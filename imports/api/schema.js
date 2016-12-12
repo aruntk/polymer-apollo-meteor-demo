@@ -1,5 +1,5 @@
 const typeDefs = [`
-type github {
+type Github {
   login: String
   id: String
   avatar_url: String
@@ -32,7 +32,7 @@ type github {
   updated_at: String
 }
 type Query {
-  github(username: String!) : github
+  github(username: String!) : Github
 }
 schema {
   query: Query
