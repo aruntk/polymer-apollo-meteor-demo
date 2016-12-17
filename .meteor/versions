@@ -49,7 +49,7 @@ modules@0.7.7
 modules-runtime@0.7.7
 mongo@1.1.14
 mongo-id@1.0.6
-mwc:mixin@1.0.33
+mwc:mixin@1.0.35
 mwc:synthesis@1.0.42
 mwc:synthesis-compiler@1.0.40
 npm-mongo@2.2.11_2
